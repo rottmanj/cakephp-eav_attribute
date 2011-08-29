@@ -31,9 +31,8 @@ class EavEntityBehavior extends ModelBehavior{
                                         {
                                                 $attributeExists = $Model->{$assoc['with']}->find('all',
                                                         array('conditions' => array(
-                                                                                                        array('attribute_id ='=>$attribute_id),
-                                                                                                        array('AND ' => array('entity_id'=>$Model->data[$Model->alias]['entity_id'])))));
-                                                debug($attributeExists);                
+                                                                array('attribute_id ='=>$attribute_id),
+                                                                array('AND ' => array('entity_id'=>$Model->data[$Model->alias]['entity_id'])))));              
                                                 if(!empty($attributeExists))
                                                 {
                                                         $Model->{$assoc['with']}->set('id',$attributeExists[0][$Model->{$assoc['with']}->alias]['id']);
@@ -44,7 +43,7 @@ class EavEntityBehavior extends ModelBehavior{
                                                 
                                                 $Model->{$assoc['with']}->save();
                                         }
-                                        $i++;
+                                $i++;
                                 }
                         }                       
                 }
