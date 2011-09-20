@@ -13,6 +13,7 @@ Requirements
 ============
 
 * Top level entity model has an hasMany association to the child attribute models
+* Top level associations require an attribute in the association definition named `isEav`
 * Child attribute models have an belongsTo association to the top level entity model
 * Child attribute models have an hasOne association to the `EavAttribute` model
 
@@ -20,6 +21,7 @@ Usage Example
 ========
 
 * Top level Entity Model (UserEntity)
+		
 		<?php
 			class UserEntity extends AppModel {
 		        var $name = 'UserEntity';
@@ -29,6 +31,7 @@ Usage Example
 		        var $hasMany = array(
 	                'UserEntityVarchar' => array(
 	                        'className' => 'UserEntityVarchar',
+	                        'isEav' => 'true',
 	                        'foreignKey' => 'entity_id',
 	                        'dependent' => false,
 	                        'conditions' => '',
